@@ -1,0 +1,116 @@
+<main class="main">
+  <section class="box">
+    <div class="box__head">
+      <h3 class="box__head__title" (click)="toggleText()">
+        Observatório da Criança e Adolescente
+        <svg id="description_icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
+        </svg>
+      </h3>
+      <nav class="box__menu">
+        <label for="chart" class="selection_label fadded">Grafico</label>
+        <span (click)="navigate('municipio')" id="chart">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path d="M304 240V16.6c0-9 7-16.6 16-16.6C443.7 0 544 100.3 544 224c0 9-7.6 16-16.6 16H304zM32 272C32 150.7 122.1 50.3 239 34.3c9.2-1.3 17 6.1 17 15.4V288L412.5 444.5c6.7 6.7 6.2 17.7-1.5 23.1C371.8 495.6 323.8 512 272 512C139.5 512 32 404.6 32 272zm526.4 16c9.3 0 16.6 7.8 15.4 17c-7.7 55.9-34.6 105.6-73.9 142.3c-6 5.6-15.4 5.2-21.2-.7L320 288H558.4z"/>
+          </svg>
+        </span>
+        <label for="year" class="selection_label fadded">ano</label>
+        <input type="number" min="2010" max="2019" id="year" class="selection_box" value="2010" (change)="setYear($event)" />
+      </nav>
+    </div>
+    <div class="box__board" *ngIf="description">
+      <p class="box__board__text" >
+        O Observatório da Criança e do Adolescente é um espaço virtual que possibilita a consulta, em um mesmo lugar, dos principais indicadores sociais relacionados direta e indiretamente à infância e adolescência no Brasil. Seu objetivo é organizar as informações e facilitar o acesso a bases de dados de diversas fontes púbicas e privadas sobre população, qualidade de vida e bem-estar de crianças e adolescentes com idades ente zero e 18 anos, permitindo uma análise da evolução das principais políticas, dos desafios e das desigualdades regionais. Destina-se a formadores de opinião, representantes da sociedade civil, pesquisadores, gestores públicos e quaisquer pessoas que queiram, a partir de um simples mecanismo de busca online, conhecer a realidade e os problemas sociais que mais afetam as crianças e os adolescentes no país.
+      </p>
+    </div>
+    <table>
+      <thead class="t_row">
+        <tr>
+          <th class="t_cell fadded t_head" (click)="setSort('municipio')">
+            Município
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'municipio'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'municipio,desc'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+          </th>
+          <th class="t_cell fadded t_head" (click)="setSort('taxaBruta')">
+            Taxa De Matrícula
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'taxaBruta'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'taxaBruta,desc'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+          </th>
+          <th class="t_cell fadded t_head" (click)="setSort('numeroBruto')">
+            Número de Matrículas
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'numeroBruto'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'numeroBruto,desc'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+          </th>
+          <th class="t_cell fadded t_head" (click)="setSort('taxaLiquida')">
+            Taxa de Matrícula
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'taxaLiquida'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'taxaLiquida,desc'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+          </th>
+          <th class="t_cell fadded t_head" (click)="setSort('numeroLiquido')">
+            Número de Matrículas
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'numeroLiquido'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            <svg class="small_icon fadded_icon" *ngIf="sort === 'numeroLiquido,desc'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+          </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th colspan="2" class="t_cell fadded">Bruto</th>
+          <th colspan="2" class="t_cell fadded">liquido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="t_row t_head" *ngFor="let row of data?.content; index as i" >
+          <td class="t_cell t_multy">
+            <input type="checkbox" class="t_checkbox" id="checkbox{{i}}" value="{{row.id_municipio}}">
+            <label id="municipio{{i}}" for="checkbox{{i}}">{{ row.id_municipio }}</label>
+          </td>
+          <td class="t_cell">{{ row.taxa_bruta_matricula_pre_escola }}</td>
+          <td class="t_cell">{{ row.numero_absoluto_bruto_matricula_pre_escola }}</td>
+          <td class="t_cell">{{ row.taxa_liquida_matricula_pre_escola }}</td>
+          <td class="t_cell">{{ row.numero_absoluto_liquido_matricula_pre_escola }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="box__foot">
+      <nav class="left">
+        <input type="number" class="selection_box med" value="10" min="1" (change)="setSize($event)">
+        <span class="selection_label fadded">Número de Linhas</span>
+      </nav>
+      <!-- <nav class="box__foot__pagination">
+        <button class="box__foot__pagination__button">
+          <svg class="small_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+            <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
+          </svg>
+        </button>
+        <div>
+          <span class="box__foot__pagination__number">
+            1
+          </span>
+          <span class="box__foot__pagination__number">
+            2
+          </span>
+          <span class="box__foot__pagination__number">
+            3
+          </span>
+          <span class="box__foot__pagination__number">
+            ...
+          </span>
+          <span class="box__foot__pagination__number">
+            {{ data?.totalPages }}
+          </span>
+        </div>
+        <button class="box__foot__pagination__button">
+          <svg class="small_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+            <path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
+          </svg>
+        </button>
+      </nav> -->
+      <nav class="right">
+        <span class="selection_label fadded">
+          Página
+        </span>
+        <input type="number" class="selection_box" value="1" min="1" max="data.totalPages" (change)="setPage($event)">
+      </nav>
+    </div>
+  </section>
+</main>

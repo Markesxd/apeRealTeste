@@ -1,0 +1,131 @@
+.main {
+  background: #F9FBFC;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+}
+
+.box__head {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.box__head__title {
+  font-size: 1.2rem;
+}
+
+.box__board {
+  display: flex;
+  justify-content: center;
+}
+
+.box__board__text {
+  width: 45vw;
+  margin: 1rem 2rem;
+  text-align: justify;
+}
+
+.selection_label {
+    margin-right: 0.3rem;
+    margin-left: 1rem;
+}
+
+.selection_box {
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+  max-width: 3rem;
+  text-align: left;
+}
+
+.med {
+  max-width: 2rem;
+}
+
+.small {
+  min-width: 1.5rem;
+}
+
+.t_row {
+  border: 1px solid #e0e0e0;
+}
+
+.t_cell {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.t_multy {
+  display: flex;
+  align-items: center;
+}
+
+.t_head {
+  cursor: pointer;
+}
+
+.t_checkbox {
+  margin-right: 0.5rem;
+}
+
+.fadded {
+  color: #888888;
+}
+
+.box__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.box__foot__pagination {
+  display: flex;
+  align-items: center;
+}
+
+.box__foot__pagination__button {
+  border: 1px solid #e0e0e0;
+  border-radius: 0.2rem;
+  background: #fff;
+}
+
+.box__foot__pagination__button:hover {
+  background-color: #eee;
+}
+
+.box__foot__pagination__button:active {
+  background-color: #e0e0e0;
+}
+
+.box__foot__pagination__number {
+  text-align: center;
+  vertical-align: center;
+  padding: 0 0.5rem
+}
+
+.icon {
+  transition: all 0.3s linear;
+  width: 1rem;
+}
+
+.small_icon {
+  width: 0.5rem;
+}
+
+.fadded_icon {
+  fill: #888888
+}
+
+.rotate {
+  transform: rotate(180deg)
+}

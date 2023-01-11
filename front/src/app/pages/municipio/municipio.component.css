@@ -1,0 +1,36 @@
+.main {
+  background: #F9FBFC;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+}
+
+.box__head {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.chart {
+  width: 60vw;
+  padding: 2rem;
+}
+
+.icon {
+  transition: all 0.3s linear;
+  width: 1rem;
+}
+
+.box__menu {
+  width: 5vw;
+  display: flex;
+  justify-content: space-between;
+}
